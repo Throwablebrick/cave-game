@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7fhny8wdjn3" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="PackedScene" uid="uid://bolctf21jpyf2" path="res://scenes/platform.tscn" id="2_iyx0m"]
-[ext_resource type="PackedScene" uid="uid://xi6lyciyd2s5" path="res://scenes/enemy.tscn" id="3_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://cd7rrlyt4e6v5" path="res://scenes/frog.tscn" id="3_iyx0m"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,5 +19,5 @@ position = Vector2(-315, 275)
 width = 400.0
 height = 400.0
 
-[node name="RigidBody2D" parent="." instance=ExtResource("3_iyx0m")]
-position = Vector2(486, 244)
+[node name="frog" parent="." instance=ExtResource("3_iyx0m")]
+position = Vector2(620, 222)
