@@ -10,7 +10,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collision_shape_2d.scale = Vector2(width, height)
-	sprite_2d.scale = Vector2((width/128), (height/128))
+	sprite_2d.scale = Vector2((width/16), (height/4))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

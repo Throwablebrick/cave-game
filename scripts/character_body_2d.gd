@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
-const GRAVITY = 1500
-const JUMP_SMOOTH = 100
+const GRAVITY = 1000
+const JUMP_SMOOTH = 50
 const ACCEL = 10
 const DECCEL = 15
-const SPEED = 400.0
-const JUMP_VELOCITY = -600.0
+const SPEED = 200.0
+const JUMP_VELOCITY = -300.0
+
+var health = 8
 
 
 func _physics_process(delta: float) -> void:
@@ -39,3 +41,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, DECCEL)
 
 	move_and_slide()
+	
+func damage(amount: int):
+	health -= amount
+	print(health)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	damage(body.damage)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bolctf21jpyf2"]
 
-[ext_resource type="Texture2D" uid="uid://d17rot78fw0b0" path="res://art/icon.svg" id="1_mi635"]
 [ext_resource type="Script" uid="uid://b06qc7jiw5rcs" path="res://scripts/platform.gd" id="1_s8bxr"]
+[ext_resource type="Texture2D" uid="uid://c6kvuy6ghdlxq" path="res://art/med_plat.png" id="2_nlgqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8bxr"]
 size = Vector2(1, 1)
@@ -16,4 +16,4 @@ collision_mask = 15
 shape = SubResource("RectangleShape2D_s8bxr")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_mi635")
+texture = ExtResource("2_nlgqw")
