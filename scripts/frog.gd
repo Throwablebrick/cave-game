@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 const SPEED = 150
-const JUMP_SPEED = -150
+const JUMP_SPEED = -200
 const GRAVITY = 800
 const damage = 1
 
@@ -29,11 +29,12 @@ func _process(delta: float) -> void:
 		destination=target.position
 		if jump_ready:
 			jump_ready = false
-			if frog.position.x>destination.x:
-				velocity.x = -SPEED
-			else:
-				velocity.x = SPEED
 			velocity.y = JUMP_SPEED
+		if frog.position.x>destination.x:
+			velocity.x = -SPEED
+		else:
+			velocity.x = SPEED
+			
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
