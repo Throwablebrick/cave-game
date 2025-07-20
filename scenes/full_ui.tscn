@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cua1isjrbtb1g"]
+[gd_scene load_steps=4 format=3 uid="uid://cua1isjrbtb1g"]
 
 [ext_resource type="Script" uid="uid://pqyh184tnf5g" path="res://scripts/full_ui.gd" id="1_5ivbt"]
 [ext_resource type="PackedScene" uid="uid://bmm8h18ak5toj" path="res://scenes/volume.tscn" id="1_gcnl6"]
+[ext_resource type="PackedScene" uid="uid://b3oww132khg88" path="res://scenes/heart.tscn" id="2_fe58o"]
 
 [node name="ui_node" type="Control" node_paths=PackedStringArray("pause_menu", "volume_menu")]
 layout_mode = 3
@@ -17,6 +18,7 @@ volume_menu = NodePath("pause/ColorRect/VBoxContainer2")
 [node name="hud" type="MarginContainer" parent="."]
 visible = false
 z_index = -1
+custom_minimum_size = Vector2(9, 8)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,12 +27,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="hud"]
+custom_minimum_size = Vector2(9, 8)
 layout_mode = 2
 size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="hud/VBoxContainer"]
+custom_minimum_size = Vector2(9, 8)
 layout_mode = 2
 size_flags_vertical = 4
+
+[node name="heart" parent="hud/VBoxContainer/HBoxContainer" instance=ExtResource("2_fe58o")]
+layout_mode = 2
+number = 2
+
+[node name="heart2" parent="hud/VBoxContainer/HBoxContainer" instance=ExtResource("2_fe58o")]
+layout_mode = 2
+number = 1
+
+[node name="heart3" parent="hud/VBoxContainer/HBoxContainer" instance=ExtResource("2_fe58o")]
+layout_mode = 2
 
 [node name="pause" type="MarginContainer" parent="."]
 visible = false
@@ -118,6 +133,7 @@ theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [node name="main_menu" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

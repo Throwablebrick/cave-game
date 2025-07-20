@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3oww132khg88"]
+
+[ext_resource type="Texture2D" uid="uid://bf36afnwh3s2b" path="res://art/health_bar.png" id="1_v30as"]
+[ext_resource type="Script" uid="uid://s3tdxvw27bn5" path="res://scripts/heart.gd" id="2_ycbwg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycbwg"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krgnv"]
+atlas = ExtResource("1_v30as")
+region = Rect2(9, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txm48"]
+atlas = ExtResource("1_v30as")
+region = Rect2(18, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nnyc"]
+atlas = ExtResource("1_v30as")
+region = Rect2(27, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mtg8"]
+atlas = ExtResource("1_v30as")
+region = Rect2(36, 0, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u10h0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycbwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krgnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txm48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nnyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mtg8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="heart" type="MarginContainer"]
+offset_right = 27.0
+offset_bottom = 24.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("2_ycbwg")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(20.5, 20)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u10h0")

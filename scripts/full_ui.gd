@@ -6,6 +6,9 @@ extends Control
 @onready var main_menu: MarginContainer = $main_menu
 @onready var hud: MarginContainer = $hud
 
+func _ready() -> void:
+	global.toggle_main_menu.connect(_toggle_main_menu)
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui"):
 		toggle_visible(pause)
@@ -40,4 +43,7 @@ func _on_start_pressed() -> void:
 
 func _go_to_main_menu() -> void:
 	toggle_visible(hud)
+	toggle_visible(main_menu)
+
+func _toggle_main_menu():
 	toggle_visible(main_menu)

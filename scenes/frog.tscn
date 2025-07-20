@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd7rrlyt4e6v5"]
+[gd_scene load_steps=6 format=3 uid="uid://cd7rrlyt4e6v5"]
 
 [ext_resource type="Script" uid="uid://c4lbgdom5500h" path="res://scripts/frog.gd" id="1_qyo2l"]
 [ext_resource type="Texture2D" uid="uid://c45kuq4v1acte" path="res://art/Slime.png" id="2_qyo2l"]
@@ -8,6 +8,9 @@ size = Vector2(12, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rq8tc"]
 radius = 160.153
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qyo2l"]
+radius = 7.0
 
 [node name="frog" type="CharacterBody2D"]
 collision_layer = 8
@@ -30,6 +33,14 @@ shape = SubResource("CircleShape2D_rq8tc")
 wait_time = 1.14
 one_shot = true
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qyo2l")
+
 [connection signal="body_entered" from="sight" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="sight" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_hit"]
