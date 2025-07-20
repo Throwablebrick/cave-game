@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7fhny8wdjn3"]
+[gd_scene load_steps=19 format=3 uid="uid://c7fhny8wdjn3"]
 
 [ext_resource type="Script" uid="uid://uxg4hkbegm4p" path="res://scripts/character_body_2d.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bnjynkt4lkvre" path="res://art/player.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://bjv7u6wgoiure" path="res://art/player_walkt.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cmdcmluq537l0" path="res://art/player_top.png" id="4_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://xkypdt64h5sw" path="res://art/player_swordt.png" id="5_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bnfiwap27e4tp" path="res://art/player_truesword.png" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(10, 26)
@@ -43,30 +43,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y4r1p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_g2els")
 }],
 "loop": true,
 "name": &"walking",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
-atlas = ExtResource("5_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("5_qlg0r")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
-atlas = ExtResource("5_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("5_qlg0r")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
-atlas = ExtResource("5_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("5_qlg0r")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("5_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("5_qlg0r")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("5_qlg0r")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a8ls1"]
 animations = [{
@@ -80,16 +81,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3v2ag")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jej6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ej7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
 }],
 "loop": true,
 "name": &"sword",
@@ -97,9 +101,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(4, 11)
+size = Vector2(9.99999, 10.5)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_onrkg")
 
@@ -107,38 +111,43 @@ script = ExtResource("1_onrkg")
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="hurt_box" type="Area2D" parent="Node2D"]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/hurt_box"]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_i3pqv")
 
-[node name="legs" type="AnimatedSprite2D" parent="."]
+[node name="legs" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
 animation = &"walking"
+frame_progress = 0.467144
 
-[node name="torso" type="AnimatedSprite2D" parent="."]
+[node name="torso" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_a8ls1")
-animation = &"basis"
+animation = &"sword"
+frame_progress = 0.828656
 
-[node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(11, -5)
+[node name="sword" type="Area2D" parent="Node2D"]
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/sword"]
+position = Vector2(-8.00004, -11.25)
 shape = SubResource("RectangleShape2D_g2els")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Node2D/hurt_box" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

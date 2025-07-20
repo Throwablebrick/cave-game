@@ -7,12 +7,14 @@ extends CharacterBody2D
 const SPEED = 150
 const JUMP_SPEED = -200
 const GRAVITY = 800
-const damage = 1
+const power = 1
 
 var found: bool
 var destination: Vector2
 var jump_ready = true
 var target
+var direction = 1
+var health = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,17 +25,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+		velocity.x = SPEED * direction
 	else:
 		velocity.x = 0
 	if found:
 		destination=target.position
 		if jump_ready:
+			if frog.position.x>destination.x:
+				direction = -1
+			else:
+				direction = 1
 			jump_ready = false
 			velocity.y = JUMP_SPEED
-		if frog.position.x>destination.x:
-			velocity.x = -SPEED
-		else:
-			velocity.x = SPEED
+		
 			
 	move_and_slide()
 
