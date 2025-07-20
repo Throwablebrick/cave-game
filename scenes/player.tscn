@@ -114,7 +114,6 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
-zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 

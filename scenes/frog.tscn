@@ -28,7 +28,7 @@ shape = SubResource("CircleShape2D_rq8tc")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.14
-autostart = true
+one_shot = true
 
 [connection signal="body_entered" from="sight" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="sight" to="." method="_on_area_2d_body_exited"]
