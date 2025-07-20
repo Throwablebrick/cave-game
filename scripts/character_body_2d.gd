@@ -9,8 +9,8 @@ extends CharacterBody2D
 
 const GRAVITY = 1000
 const JUMP_SMOOTH = 50
-const ACCEL = 10
-const DECCEL = 15
+const ACCEL = 8
+const DECCEL = 40
 const SPEED = 200.0
 const JUMP_VELOCITY = -320.0
 const KNOCKBACKX = 200

@@ -10,7 +10,7 @@ const JUMP_SPEED = -200
 const GRAVITY = 800
 const KNOCKBACKX = 210
 const KNOCKBACKY = -100
-const power = 1
+const power = 2
 
 var found: bool
 var destination: Vector2
