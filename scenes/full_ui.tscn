@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bmm8h18ak5toj" path="res://scenes/volume.tscn" id="1_gcnl6"]
 [ext_resource type="PackedScene" uid="uid://b3oww132khg88" path="res://scenes/heart.tscn" id="2_fe58o"]
 
-[node name="ui_node" type="Control" node_paths=PackedStringArray("pause_menu", "volume_menu")]
+[node name="ui_node" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,8 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5ivbt")
-pause_menu = NodePath("pause/ColorRect/VBoxContainer")
-volume_menu = NodePath("pause/ColorRect/VBoxContainer2")
 
 [node name="hud" type="MarginContainer" parent="."]
 visible = false
@@ -64,7 +62,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.126, 0.273, 0.42, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause/ColorRect"]
+[node name="pause_menu" type="VBoxContainer" parent="pause/ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -75,11 +73,11 @@ offset_bottom = 50.0
 grow_horizontal = 2
 theme_override_constants/separation = 25
 
-[node name="Control" type="Control" parent="pause/ColorRect/VBoxContainer"]
+[node name="Control" type="Control" parent="pause/ColorRect/pause_menu"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="pause/ColorRect/VBoxContainer"]
+[node name="Button" type="Button" parent="pause/ColorRect/pause_menu"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -87,19 +85,19 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Return To Game"
 
-[node name="Button2" type="Button" parent="pause/ColorRect/VBoxContainer"]
+[node name="Button2" type="Button" parent="pause/ColorRect/pause_menu"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Main Menu"
 
-[node name="Button3" type="Button" parent="pause/ColorRect/VBoxContainer"]
+[node name="Button3" type="Button" parent="pause/ColorRect/pause_menu"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Volume settings"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="pause/ColorRect"]
+[node name="volume_menu" type="VBoxContainer" parent="pause/ColorRect"]
 visible = false
 layout_mode = 1
 anchors_preset = 13
@@ -110,27 +108,69 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="pause/ColorRect/VBoxContainer2"]
+[node name="Control" type="Control" parent="pause/ColorRect/volume_menu"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="HSlider" parent="pause/ColorRect/VBoxContainer2" instance=ExtResource("1_gcnl6")]
+[node name="HSlider" parent="pause/ColorRect/volume_menu" instance=ExtResource("1_gcnl6")]
 layout_mode = 2
 
-[node name="HSlider2" parent="pause/ColorRect/VBoxContainer2" instance=ExtResource("1_gcnl6")]
+[node name="HSlider2" parent="pause/ColorRect/volume_menu" instance=ExtResource("1_gcnl6")]
 layout_mode = 2
 audio_bus_name = "sfx"
 message = "Sound Effects"
 
-[node name="HSlider3" parent="pause/ColorRect/VBoxContainer2" instance=ExtResource("1_gcnl6")]
+[node name="HSlider3" parent="pause/ColorRect/volume_menu" instance=ExtResource("1_gcnl6")]
 layout_mode = 2
 audio_bus_name = "music"
+message = "Music"
 
-[node name="Button" type="Button" parent="pause/ColorRect/VBoxContainer2"]
+[node name="Button" type="Button" parent="pause/ColorRect/volume_menu"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Back"
+
+[node name="death_menu" type="VBoxContainer" parent="pause/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="pause/ColorRect/death_menu"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="pause/ColorRect/death_menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "You died"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="pause/ColorRect/death_menu"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Try Again"
+
+[node name="Button2" type="Button" parent="pause/ColorRect/death_menu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="Button3" type="Button" parent="pause/ColorRect/death_menu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
 
 [node name="main_menu" type="MarginContainer" parent="."]
 visible = false
@@ -173,9 +213,9 @@ text = "Start"
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="pause/ColorRect/VBoxContainer/Button" to="." method="_return_to_game"]
-[connection signal="pressed" from="pause/ColorRect/VBoxContainer/Button2" to="." method="_go_to_main_menu"]
-[connection signal="pressed" from="pause/ColorRect/VBoxContainer/Button3" to="." method="_toggle_volume"]
-[connection signal="pressed" from="pause/ColorRect/VBoxContainer2/Button" to="." method="_toggle_volume"]
+[connection signal="pressed" from="pause/ColorRect/pause_menu/Button" to="." method="_return_to_game"]
+[connection signal="pressed" from="pause/ColorRect/pause_menu/Button2" to="." method="_go_to_main_menu"]
+[connection signal="pressed" from="pause/ColorRect/pause_menu/Button3" to="." method="_toggle_volume"]
+[connection signal="pressed" from="pause/ColorRect/volume_menu/Button" to="." method="_toggle_volume"]
 [connection signal="pressed" from="main_menu/ColorRect/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="main_menu/ColorRect/VBoxContainer/quit" to="." method="_on_quit_pressed"]

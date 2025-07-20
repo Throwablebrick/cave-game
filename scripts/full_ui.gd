@@ -1,10 +1,11 @@
 extends Control
 
-@export var pause_menu: VBoxContainer
-@export var volume_menu: VBoxContainer
 @onready var pause: MarginContainer = $pause
 @onready var main_menu: MarginContainer = $main_menu
 @onready var hud: MarginContainer = $hud
+@onready var pause_menu: VBoxContainer = $pause/ColorRect/pause_menu
+@onready var volume_menu: VBoxContainer = $pause/ColorRect/volume_menu
+@onready var death_menu: VBoxContainer = $pause/ColorRect/death_menu
 
 func _ready() -> void:
 	global.toggle_main_menu.connect(_toggle_main_menu)
@@ -44,6 +45,7 @@ func _on_start_pressed() -> void:
 func _go_to_main_menu() -> void:
 	toggle_visible(hud)
 	toggle_visible(main_menu)
+	toggle_visible(pause)
 
 func _toggle_main_menu():
 	toggle_visible(main_menu)
