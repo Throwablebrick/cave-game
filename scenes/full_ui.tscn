@@ -14,7 +14,6 @@ grow_vertical = 2
 script = ExtResource("1_5ivbt")
 
 [node name="hud" type="MarginContainer" parent="."]
-visible = false
 z_index = -1
 custom_minimum_size = Vector2(9, 8)
 layout_mode = 1
@@ -154,19 +153,13 @@ theme_override_font_sizes/font_size = 30
 text = "You died"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="pause/ColorRect/death_menu"]
+[node name="try_again" type="Button" parent="pause/ColorRect/death_menu"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Try Again"
 
-[node name="Button2" type="Button" parent="pause/ColorRect/death_menu"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Main Menu"
-
-[node name="Button3" type="Button" parent="pause/ColorRect/death_menu"]
+[node name="quit" type="Button" parent="pause/ColorRect/death_menu"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -217,5 +210,7 @@ text = "Quit"
 [connection signal="pressed" from="pause/ColorRect/pause_menu/Button2" to="." method="_go_to_main_menu"]
 [connection signal="pressed" from="pause/ColorRect/pause_menu/Button3" to="." method="_toggle_volume"]
 [connection signal="pressed" from="pause/ColorRect/volume_menu/Button" to="." method="_toggle_volume"]
+[connection signal="pressed" from="pause/ColorRect/death_menu/try_again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="pause/ColorRect/death_menu/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="main_menu/ColorRect/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="main_menu/ColorRect/VBoxContainer/quit" to="." method="_on_quit_pressed"]

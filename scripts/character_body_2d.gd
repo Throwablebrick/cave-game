@@ -70,6 +70,8 @@ func _physics_process(delta: float) -> void:
 	
 func damage(amount: int, direction: int) -> void:
 	global.player_health -= amount
+	if global.player_health <= 0:
+		global.death()
 	velocity = Vector2(KNOCKBACKX * direction, KNOCKBACKY)
 	global.ui_update()
 
