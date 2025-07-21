@@ -13,8 +13,7 @@ func _switch_levels(lvl = "trash"):
 	if lvl == "trash":
 		new_level = current_level
 	
-	var next_level = load(new_level)
-	level = new_level.instance()
+	var next_level = load(new_level).instantiate()
 	add_child(next_level)
 	global.player_health = 12
 	current_level= new_level

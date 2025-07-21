@@ -44,8 +44,8 @@ func _process(delta: float) -> void:
 					direction = 1
 				jump_ready = false
 				velocity.y = JUMP_SPEED
-			
-				
+
+
 		move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
