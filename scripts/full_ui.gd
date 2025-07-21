@@ -47,4 +47,4 @@ func _on_try_again_pressed() -> void:
 	global.player_health = 12
 	global.running = true
 	global.run_once = true
-	get_tree().reload_current_scene()
+	global.next_level()

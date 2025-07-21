@@ -1,5 +1,6 @@
 extends Node
 
+
 signal toggle_main_menu
 signal update_ui
 signal died
@@ -16,7 +17,7 @@ func death():
 	died.emit()
 func ui_update():
 	update_ui.emit(player_health)
-func next_level(path):
+func next_level(path = "trash"):
 	switch_level.emit(path)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
