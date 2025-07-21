@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cua1isjrbtb1g" path="res://scenes/full_ui.tscn" id="1_bjr87"]
 [ext_resource type="PackedScene" uid="uid://cucwcsmtxeybl" path="res://scenes/test.tscn" id="1_sqjmx"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="container" type="SubViewportContainer" parent="."]
 custom_minimum_size = Vector2(640, 320)

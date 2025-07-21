@@ -101,7 +101,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(13, 12)
+size = Vector2(19, 14)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -142,7 +142,7 @@ collision_layer = 64
 collision_mask = 32
 
 [node name="sword_colider" type="CollisionShape2D" parent="Node2D/sword"]
-position = Vector2(-6.50004, -12)
+position = Vector2(-3.50006, -13)
 shape = SubResource("RectangleShape2D_g2els")
 disabled = true
 
@@ -150,7 +150,7 @@ disabled = true
 one_shot = true
 
 [node name="attack_timer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.57
 one_shot = true
 
 [connection signal="body_entered" from="Node2D/hurt_box" to="." method="_on_area_2d_body_entered"]
