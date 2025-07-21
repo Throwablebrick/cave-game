@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_ss3tx")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p5otw")
-frame_progress = 0.0903576
+frame_progress = 0.819119
 
 [node name="hurt_area" type="Area2D" parent="."]
 collision_layer = 32
