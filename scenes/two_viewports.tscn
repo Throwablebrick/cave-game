@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://cop7f5cgen280" path="res://scripts/sub_viewport.gd" id="1_85bhg"]
 [ext_resource type="PackedScene" uid="uid://cua1isjrbtb1g" path="res://scenes/full_ui.tscn" id="1_bjr87"]
 [ext_resource type="PackedScene" uid="uid://cucwcsmtxeybl" path="res://scenes/test.tscn" id="1_sqjmx"]
-[ext_resource type="AudioStream" uid="uid://cttwhow4uvgwn" path="res://audio/music_start.wav" id="4_j4rcb"]
-
-[sub_resource type="AudioStream" id="AudioStream_c21bd"]
-resource_name = "main_music"
+[ext_resource type="AudioStream" uid="uid://b0b7g2ex1e8hx" path="res://audio/music_start.mp3" id="4_j4rcb"]
+[ext_resource type="AudioStream" uid="uid://mcioa8m46ca7" path="res://audio/main_music.mp3" id="5_j4rcb"]
 
 [node name="Node2D2" type="Node2D"]
 
@@ -35,6 +33,8 @@ stream = ExtResource("4_j4rcb")
 bus = &"music"
 
 [node name="main_music" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStream_c21bd")
+stream = ExtResource("5_j4rcb")
+bus = &"music"
 
 [connection signal="finished" from="music_start" to="container/sub" method="_on_music_start_finished"]
+[connection signal="finished" from="main_music" to="container/sub" method="_on_main_music_finished"]

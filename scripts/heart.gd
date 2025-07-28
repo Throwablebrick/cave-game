@@ -11,3 +11,9 @@ func _ready() -> void:
 func _update_ui(health: int):
 	if floor((11-health)/4) == number:
 		sprite.frame = ((11-health) % 4) + 1
+	if health > 12:
+		sprite.frame = 0
+		global.hearts_updated += 1
+		if global.hearts_updated == 3:
+			global.player_health = 12
+			global.hearts_updated = 0

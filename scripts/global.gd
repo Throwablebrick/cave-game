@@ -9,6 +9,7 @@ signal switch_level
 var player_health = 12
 var running = true
 var run_once = true
+var hearts_updated = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +22,7 @@ func next_level(path = "trash"):
 	switch_level.emit(path)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if run_once:
 		toggle_main_menu.emit()
 		run_once = false

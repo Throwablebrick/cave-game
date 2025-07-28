@@ -7,44 +7,47 @@ extends Control
 @onready var volume_menu: VBoxContainer = $pause/ColorRect/volume_menu
 @onready var death_menu: VBoxContainer = $pause/ColorRect/death_menu
 
+func toggle_visible(thing: Object):
+	if thing.visible:
+		thing.visible = false
+	else:
+		thing.visible = true
 func _ready() -> void:
 	global.toggle_main_menu.connect(_toggle_main_menu)
 	global.died.connect(_death_screen)
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui"):
-		toggle_visible(pause)
+		pause.visible = true
+		pause_menu.visible = true
 		global.running = false
-func toggle_visible(object):
-	if object.visible:
-		object.visible = false
-	else:
-		object.visible = true
 func _toggle_volume() -> void:
-	toggle_visible(volume_menu)
 	toggle_visible(pause_menu)
+	toggle_visible(volume_menu)
 func _return_to_game() -> void:
-	toggle_visible(pause)
+	pause.visible = false
 	global.running = true
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 func _on_start_pressed() -> void:
 	global.running = true
-	toggle_visible(main_menu)
-	toggle_visible(hud)
+	main_menu.visible = false
+	hud.visible = true
 func _go_to_main_menu() -> void:
-	toggle_visible(hud)
-	toggle_visible(main_menu)
-	toggle_visible(pause)
+	hud.visible = false
+	main_menu.visible = true
+	pause.visible = false
 func _toggle_main_menu():
 	toggle_visible(main_menu)
 	toggle_visible(hud)
 func _death_screen():
-	toggle_visible(pause)
-	toggle_visible(pause_menu)
-	toggle_visible(death_menu)
+	pause.visible = true
+	pause_menu.visible = false
+	death_menu.visible = true
 	global.running = false
 func _on_try_again_pressed() -> void:
 	global.player_health = 12
+	global.ui_update()
 	global.running = true
-	global.run_once = true
+	pause.visible = false
+	death_menu.visible = false
 	global.next_level()

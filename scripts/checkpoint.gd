@@ -6,5 +6,5 @@ extends Node2D
 
 func _ready() -> void:
 	checkpoint.play("default")
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	global.next_level(next_level_path)
