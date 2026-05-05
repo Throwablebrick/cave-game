@@ -1,20 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1yhmxowe3rdw"]
+[gd_scene format=3 uid="uid://b1yhmxowe3rdw"]
 
 [ext_resource type="Script" uid="uid://cop7f5cgen280" path="res://scripts/sub_viewport.gd" id="1_85bhg"]
 [ext_resource type="PackedScene" uid="uid://cua1isjrbtb1g" path="res://scenes/full_ui.tscn" id="1_bjr87"]
 [ext_resource type="PackedScene" uid="uid://cucwcsmtxeybl" path="res://scenes/test.tscn" id="1_sqjmx"]
-[ext_resource type="AudioStream" uid="uid://b0b7g2ex1e8hx" path="res://audio/music_start.mp3" id="4_j4rcb"]
-[ext_resource type="AudioStream" uid="uid://mcioa8m46ca7" path="res://audio/main_music.mp3" id="5_j4rcb"]
+[ext_resource type="AudioStream" uid="uid://b0b7g2ex1e8hx" path="res://audio/music/music_start.mp3" id="4_j4rcb"]
+[ext_resource type="AudioStream" uid="uid://mcioa8m46ca7" path="res://audio/music/main_music.mp3" id="5_j4rcb"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D2" type="Node2D" unique_id=926202784]
 
-[node name="container" type="SubViewportContainer" parent="."]
+[node name="container" type="SubViewportContainer" parent="." unique_id=855557685]
 custom_minimum_size = Vector2(640, 320)
 offset_right = 40.0
 offset_bottom = 40.0
 stretch = true
 
-[node name="sub" type="SubViewport" parent="container"]
+[node name="sub" type="SubViewport" parent="container" unique_id=882530744]
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
@@ -22,17 +22,17 @@ size = Vector2i(640, 320)
 render_target_update_mode = 4
 script = ExtResource("1_85bhg")
 
-[node name="Node2D" parent="container/sub" instance=ExtResource("1_sqjmx")]
+[node name="Node2D" parent="container/sub" unique_id=923718838 instance=ExtResource("1_sqjmx")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1499066753]
 
-[node name="ui_node" parent="CanvasLayer" instance=ExtResource("1_bjr87")]
+[node name="ui_node" parent="CanvasLayer" unique_id=1331505042 instance=ExtResource("1_bjr87")]
 
-[node name="music_start" type="AudioStreamPlayer2D" parent="."]
+[node name="music_start" type="AudioStreamPlayer2D" parent="." unique_id=1526736554]
 stream = ExtResource("4_j4rcb")
 bus = &"music"
 
-[node name="main_music" type="AudioStreamPlayer2D" parent="."]
+[node name="main_music" type="AudioStreamPlayer2D" parent="." unique_id=1856015885]
 stream = ExtResource("5_j4rcb")
 bus = &"music"
 

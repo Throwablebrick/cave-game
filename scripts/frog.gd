@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
+@onready var jump_start: AudioStreamPlayer2D = $jumpStart
+@onready var jump_end: AudioStreamPlayer2D = $jumpEnd
 
 const SPEED = 150
 const JUMP_SPEED = -200
@@ -44,6 +46,7 @@ func _process(delta: float) -> void:
 					direction = 1
 				jump_ready = false
 				velocity.y = JUMP_SPEED
+				jump_start.play()
 
 
 		move_and_slide()
@@ -53,6 +56,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	target=body
 	jump_ready = true
 	timer.start()
+	jump_end.play()
 
 
 func _on_timer_timeout() -> void:

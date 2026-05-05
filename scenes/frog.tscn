@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd7rrlyt4e6v5"]
+[gd_scene format=3 uid="uid://cd7rrlyt4e6v5"]
 
 [ext_resource type="Script" uid="uid://c4lbgdom5500h" path="res://scripts/frog.gd" id="1_qyo2l"]
 [ext_resource type="Texture2D" uid="uid://c45kuq4v1acte" path="res://art/Slime.png" id="2_qyo2l"]
+[ext_resource type="AudioStream" uid="uid://bhcsnhtx5ndho" path="res://audio/effects/slime_start_jump.wav" id="3_1g2vb"]
+[ext_resource type="AudioStream" uid="uid://dhsjslyua6pp6" path="res://audio/effects/slime_jump_end.mp3" id="4_1g2vb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyo2l"]
 size = Vector2(12, 10)
@@ -12,33 +14,41 @@ radius = 160.153
 [sub_resource type="CircleShape2D" id="CircleShape2D_qyo2l"]
 radius = 7.0
 
-[node name="frog" type="CharacterBody2D"]
+[node name="frog" type="CharacterBody2D" unique_id=154101243]
 collision_layer = 8
 script = ExtResource("1_qyo2l")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=490320874]
 texture = ExtResource("2_qyo2l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=166191299]
 shape = SubResource("RectangleShape2D_qyo2l")
 
-[node name="sight" type="Area2D" parent="."]
+[node name="sight" type="Area2D" parent="." unique_id=869051752]
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sight" unique_id=1724187979]
 shape = SubResource("CircleShape2D_rq8tc")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1146394018]
 wait_time = 1.14
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1527140873]
 collision_layer = 32
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1054175294]
 shape = SubResource("CircleShape2D_qyo2l")
+
+[node name="jumpStart" type="AudioStreamPlayer2D" parent="." unique_id=1882403954]
+stream = ExtResource("3_1g2vb")
+autoplay = true
+bus = &"sfx"
+
+[node name="jumpEnd" type="AudioStreamPlayer2D" parent="." unique_id=542206912]
+stream = ExtResource("4_1g2vb")
 
 [connection signal="body_entered" from="sight" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="sight" to="." method="_on_area_2d_body_exited"]
