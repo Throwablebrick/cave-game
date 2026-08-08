@@ -46,7 +46,6 @@ func _process(delta: float) -> void:
 					direction = 1
 				jump_ready = false
 				velocity.y = JUMP_SPEED
-				jump_start.play()
 
 
 		move_and_slide()
@@ -56,13 +55,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	target=body
 	jump_ready = true
 	timer.start()
-	jump_end.play()
-
 
 func _on_timer_timeout() -> void:
 	if is_on_floor():
 		jump_ready=true
 		timer.start()
+		jump_start.play()
 
 
 func _on_area_2d_body_exited(_body: Node2D) -> void:

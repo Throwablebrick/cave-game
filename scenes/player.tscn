@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7fhny8wdjn3"]
+[gd_scene format=3 uid="uid://c7fhny8wdjn3"]
 
 [ext_resource type="Script" uid="uid://uxg4hkbegm4p" path="res://scripts/character_body_2d.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bnjynkt4lkvre" path="res://art/player.png" id="2_g2els"]
@@ -30,7 +30,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_g2els")
 }],
-"loop": true,
+"loop": 1,
 "name": &"standing",
 "speed": 5.0
 }, {
@@ -44,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y4r1p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walking",
 "speed": 5.0
 }]
@@ -75,7 +75,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_tuyoq")
 }],
-"loop": false,
+"loop": 0,
 "name": &"basis",
 "speed": 0.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jej6c")
 }],
-"loop": false,
+"loop": 0,
 "name": &"sword",
 "speed": 15.0
 }]
@@ -103,55 +103,57 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(19, 14)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" unique_id=1953829290]
 collision_layer = 2
 script = ExtResource("1_onrkg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1222175679]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=2147011843]
 
-[node name="Camera2D" type="Camera2D" parent="Node2D"]
+[node name="Camera2D" type="Camera2D" parent="Node2D" unique_id=754575237]
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
-[node name="hurt_box" type="Area2D" parent="Node2D"]
+[node name="hurt_box" type="Area2D" parent="Node2D" unique_id=873788976]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/hurt_box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/hurt_box" unique_id=1496083746]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_i3pqv")
 
-[node name="legs" type="AnimatedSprite2D" parent="Node2D"]
+[node name="legs" type="AnimatedSprite2D" parent="Node2D" unique_id=407420599]
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
 animation = &"walking"
 frame_progress = 0.467144
 
-[node name="torso" type="AnimatedSprite2D" parent="Node2D"]
+[node name="torso" type="AnimatedSprite2D" parent="Node2D" unique_id=518580619]
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_a8ls1")
 animation = &"sword"
 
-[node name="sword" type="Area2D" parent="Node2D"]
+[node name="sword" type="Area2D" parent="Node2D" unique_id=1641188351]
 rotation = 1.5708
 collision_layer = 64
 collision_mask = 32
 
-[node name="sword_colider" type="CollisionShape2D" parent="Node2D/sword"]
+[node name="sword_colider" type="CollisionShape2D" parent="Node2D/sword" unique_id=1030878212]
 position = Vector2(-3.50006, -13)
 shape = SubResource("RectangleShape2D_g2els")
 disabled = true
 
-[node name="invulnerable_timer" type="Timer" parent="."]
+[node name="invulnerable_timer" type="Timer" parent="." unique_id=291364757]
 one_shot = true
 
-[node name="attack_timer" type="Timer" parent="."]
+[node name="attack_timer" type="Timer" parent="." unique_id=787755882]
 wait_time = 0.57
 one_shot = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1900016369]
 
 [connection signal="body_entered" from="Node2D/hurt_box" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="Node2D/torso" to="." method="_on_torso_animation_finished"]

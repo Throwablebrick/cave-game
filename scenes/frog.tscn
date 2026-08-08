@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4lbgdom5500h" path="res://scripts/frog.gd" id="1_qyo2l"]
 [ext_resource type="Texture2D" uid="uid://c45kuq4v1acte" path="res://art/Slime.png" id="2_qyo2l"]
-[ext_resource type="AudioStream" uid="uid://bhcsnhtx5ndho" path="res://audio/effects/slime_start_jump.wav" id="3_1g2vb"]
+[ext_resource type="AudioStream" uid="uid://cxryjwkxmg75a" path="res://audio/effects/slime_start_jump.ogg" id="3_1g2vb"]
 [ext_resource type="AudioStream" uid="uid://dhsjslyua6pp6" path="res://audio/effects/slime_jump_end.mp3" id="4_1g2vb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyo2l"]
@@ -44,11 +44,11 @@ shape = SubResource("CircleShape2D_qyo2l")
 
 [node name="jumpStart" type="AudioStreamPlayer2D" parent="." unique_id=1882403954]
 stream = ExtResource("3_1g2vb")
-autoplay = true
 bus = &"sfx"
 
 [node name="jumpEnd" type="AudioStreamPlayer2D" parent="." unique_id=542206912]
 stream = ExtResource("4_1g2vb")
+bus = &"sfx"
 
 [connection signal="body_entered" from="sight" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="sight" to="." method="_on_area_2d_body_exited"]
